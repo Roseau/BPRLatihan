@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/main}">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section layout:fragment="content" class="container">
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>Master</a></li>
+                <li class="active">agama_form</li>
+            </ol>
+            <form th:action="@{/master/agama/submit}" th:object="${agama}" th:method="post" action="/master/agama/submit" method="post">
+                <div class="box-header with-border">
+                    <h3 class="box-title">BPR - Form Agama</h3>
+                </div>
+                <div class="box-body">
+                    <input type="hidden" name="kodeAgama" id="kodeAgama" th:field="*{id}"/>
+                    <div class="form-group">
+                        <label for="inputAgama">Nama Agama</label>
+                        <input type="text" class="form-control" id="inputAgama" placeholder="nama agama" th:field="*{keterangan}"/>
+                        <div th:if="${#fields.hasErrors('keterangan')}" th:errors="*{keterangan}" class="alert alert-danger"></div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>
